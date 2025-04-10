@@ -30,7 +30,7 @@ export default definePlugin({
     },
 
     transformContent(content: string): string {
-        const regex = /\b(\d{5,6})\b/g;
+        const regex = /(?<!http|www)\b(\d{5,6})\b(?!\/|\.)/gi;
         return content.replace(regex, (match) => `[${match}](https://nhentai.net/g/${match}/)`);
     }
 });
